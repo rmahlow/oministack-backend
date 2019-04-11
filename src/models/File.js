@@ -15,7 +15,8 @@ const File = new mongoose.Schema({
     toJSON:{virtuals:true}
 })
 File.virtual('url').get(function(){
-    return `http://localhost:3333/files/${encodeURIComponent(this.path)}`
+    const URL = porcess.env.URL || 'http://localhost:3333'
+    return `${URL}/files/${encodeURIComponent(this.path)}`
 });
 
 
